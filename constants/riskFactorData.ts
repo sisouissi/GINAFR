@@ -30,3 +30,14 @@ export const childRiskFactorsList: RiskFactor[] = [
   { id: 'allergen_exposure', label: 'Forte exposition aux allergènes (si sensibilisé)', weight: 1 },
   { id: 'obesity', label: 'Obésité', weight: 1 },
 ];
+
+export const youngChildRiskFactorsList: RiskFactor[] = [
+  { id: 'severe_wheeze_history', label: 'Antécédent d\'hospitalisation pour sifflements/exacerbation', weight: 3 },
+  { id: 'uncontrolled_symptoms', label: 'Symptômes non contrôlés au cours des dernières semaines', weight: 3 },
+  { id: 'parental_asthma', label: 'Un parent (ou les deux) souffrant d\'asthme', weight: 2 },
+  { id: 'food_allergy_child', label: 'Allergie alimentaire confirmée chez l\'enfant', weight: 2 },
+  { id: 'early_sensitization', label: 'Sensibilisation précoce à des aéroallergènes (ex: acariens, pollen)', weight: 2 },
+  { id: 'eczema', label: 'Eczéma sévère', weight: 1 },
+  { id: 'passive_smoking', label: 'Exposition au tabagisme passif', weight: 1 },
+  { id: 'daycare_attendance', label: 'Fréquentation d\'une garderie/crèche', weight: 1 },
+];

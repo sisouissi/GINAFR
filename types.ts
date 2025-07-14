@@ -1,6 +1,8 @@
 
 
 
+
+
 export type AgeGroup = 'adult' | 'child' | 'youngChild';
 
 // Niveaux de contrôle
@@ -144,6 +146,7 @@ export interface PatientData {
   youngChild_diagnosisCriteria: YoungChildDiagnosisCriteria | null;
   youngChild_controlLevel: ControlLevel | null;
   youngChild_reviewReminderDate: string | null;
+  youngChild_riskFactors: string[];
   
   // Commun pour les exacerbations
   exacerbationSeverity: ExacerbationSeverity | null;
@@ -182,6 +185,7 @@ export const initialPatientData: PatientData = {
   youngChild_diagnosisCriteria: { criterion1: false, criterion2: false, criterion3: false },
   youngChild_controlLevel: null,
   youngChild_reviewReminderDate: null,
+  youngChild_riskFactors: [],
 
   exacerbationSeverity: null,
 
@@ -239,6 +243,7 @@ export type StepId =
   | 'CHILD_PRINT_REPORT'
   // Jeune enfant (<=5)
   | 'YOUNG_CHILD_DIAGNOSIS_STEP'
+  | 'YOUNG_CHILD_RISK_ASSESSMENT_STEP'
   | 'YOUNG_CHILD_SUSPECTED_ASTHMA_STEP'
   | 'YOUNG_CHILD_SYMPTOM_PATTERN_STEP'
   | 'YOUNG_CHILD_TREATMENT_PLAN_STEP'
