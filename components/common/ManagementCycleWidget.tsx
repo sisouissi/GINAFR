@@ -29,9 +29,10 @@ const ManagementCycleWidget: React.FC<ManagementCycleWidgetProps> = ({ ageGroup 
     const controlLevel = patientData[`${ageGroup}_controlLevel` as const] as ControlLevel | null;
     const reminderDate = patientData[`${ageGroup}_reviewReminderDate` as const] as string | null;
     
-    const assessmentStepId = `${ageGroup.toUpperCase()}_CONTROL_ASSESSMENT_STEP` as StepId;
-    const exacerbationStepId = `${ageGroup.toUpperCase()}_EXACERBATION_INTRO_STEP` as StepId;
-    const reportStepId = `${ageGroup.toUpperCase()}_PRINT_REPORT` as StepId;
+    const prefix = ageGroup === 'youngChild' ? 'YOUNG_CHILD' : ageGroup.toUpperCase();
+    const assessmentStepId = `${prefix}_CONTROL_ASSESSMENT_STEP` as StepId;
+    const exacerbationStepId = `${prefix}_EXACERBATION_INTRO_STEP` as StepId;
+    const reportStepId = `${prefix}_PRINT_REPORT` as StepId;
 
     const handleSetReminder = () => {
         openInfoModal("Définir un Rappel de Suivi", <SetReminderModalContent ageGroup={ageGroup} />);

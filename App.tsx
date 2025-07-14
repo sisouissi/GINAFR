@@ -1,7 +1,4 @@
 
-
-
-
 import React from 'react';
 import { PatientDataProvider } from './contexts/PatientDataContext';
 import { NavigationProvider, useNavigation } from './contexts/NavigationContext';
@@ -51,6 +48,7 @@ import YoungChildControlAssessmentStep from './components/steps/youngChild/Young
 import YoungChildExacerbationIntroStep from './components/steps/youngChild/YoungChildExacerbationIntroStep';
 import YoungChildExacerbationSeverityStep from './components/steps/youngChild/YoungChildExacerbationSeverityStep';
 import YoungChildExacerbationPlanStep from './components/steps/youngChild/YoungChildExacerbationPlanStep';
+import YoungChildRiskAssessmentStep from './components/steps/youngChild/YoungChildRiskAssessmentStep';
 
 // Severe Asthma Container
 import SevereAsthmaPathway from './components/steps/severe_asthma/SevereAsthmaPathway';
@@ -127,6 +125,8 @@ const StepRenderer: React.FC = () => {
     // Young Child Pathway
     case 'YOUNG_CHILD_DIAGNOSIS_STEP':
       return <YoungChildDiagnosisStep />;
+    case 'YOUNG_CHILD_RISK_ASSESSMENT_STEP':
+      return <YoungChildRiskAssessmentStep />;
     case 'YOUNG_CHILD_SUSPECTED_ASTHMA_STEP':
       return <YoungChildSuspectedAsthmaStep />;
     case 'YOUNG_CHILD_SYMPTOM_PATTERN_STEP':

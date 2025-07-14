@@ -42,13 +42,13 @@ const YoungChildDiagnosisStep: React.FC = () => {
     const metCriteriaCount = Object.values(criteria).filter(Boolean).length;
     if (metCriteriaCount === 3) {
       // Asthme confirmé
-      navigateTo('YOUNG_CHILD_SYMPTOM_PATTERN_STEP', { 
+      navigateTo('YOUNG_CHILD_RISK_ASSESSMENT_STEP', { 
         diagnosisConfirmed: true, 
         youngChild_diagnosisCriteria: criteria 
       });
     } else if (metCriteriaCount >= 1) {
-      // Asthme suspecté -> on passe directement au choix du schéma pour l'essai thérapeutique
-      navigateTo('YOUNG_CHILD_SYMPTOM_PATTERN_STEP', { 
+      // Asthme suspecté
+      navigateTo('YOUNG_CHILD_RISK_ASSESSMENT_STEP', { 
         diagnosisConfirmed: false, // C'est provisoire
         youngChild_diagnosisCriteria: criteria 
       });
@@ -122,9 +122,6 @@ const YoungChildDiagnosisStep: React.FC = () => {
         >
           Déterminer le Diagnostic
         </Button>
-        <p className="text-xs text-slate-500 text-center mt-2">
-            Si moins de 3 critères sont remplis, cela mènera à la sélection d'un essai thérapeutique.
-        </p>
     </Card>
   );
 };

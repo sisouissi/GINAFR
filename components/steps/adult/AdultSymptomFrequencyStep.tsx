@@ -10,19 +10,10 @@ const AdultSymptomFrequencyStep: React.FC = () => {
   const { navigateTo } = useNavigation();
 
   const handleSelection = (frequency: AdultSymptomFrequency, initialGinaStep: 1 | 2 | 3 | 4) => {
-    // Pour les présentations plus légères (Paliers 1 & 2), une évaluation détaillée des risques est cliniquement utile avant de choisir une voie.
-    // Pour les présentations plus sévères (Paliers 3 & 4), un risque élevé est déjà implicite, nous pouvons donc passer à la sélection de la voie.
-    if (initialGinaStep === 1 || initialGinaStep === 2) {
-      navigateTo('ADULT_RISK_ASSESSMENT_STEP', {
-        adult_symptomFrequency: frequency,
-        adult_currentGinaStep: initialGinaStep,
-      });
-    } else {
-      navigateTo('ADULT_PATHWAY_SELECTION_STEP', {
-        adult_symptomFrequency: frequency,
-        adult_currentGinaStep: initialGinaStep,
-      });
-    }
+    navigateTo('ADULT_PATHWAY_SELECTION_STEP', {
+      adult_symptomFrequency: frequency,
+      adult_currentGinaStep: initialGinaStep,
+    });
   };
 
   const FlowchartSection: React.FC<{
@@ -141,7 +132,7 @@ const AdultSymptomFrequencyStep: React.FC = () => {
         <div className="flex items-start">
           <HelpCircle size={18} className="mr-2 mt-0.5 text-slate-500 flex-shrink-0" />
           <p className="text-slate-600">
-            Cet organigramme guide le choix du palier GINA initial. Pour les patients avec des symptômes plus légers (Paliers 1 & 2), les facteurs de risque seront évalués ensuite.
+            Cet organigramme guide le choix du palier GINA initial. L'étape suivante sera la sélection de la voie thérapeutique.
           </p>
         </div>
       </div>

@@ -1,12 +1,14 @@
+
 import React from 'react';
 import { usePatientData } from '../../contexts/PatientDataContext';
 import { useNavigation } from '../../contexts/NavigationContext';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import { youngChildTreatments } from '../../constants/treatmentData';
-import { Baby, FileText, Printer, ArrowLeft, CheckCircle2, XCircle, Square, CheckSquare, Calendar, ClipboardList, Zap, ShieldCheck } from '../../constants/icons';
+import { Baby, FileText, Printer, ArrowLeft, CheckCircle2, XCircle, Square, CheckSquare, Calendar, ClipboardList, Zap, ShieldCheck, AlertTriangle } from '../../constants/icons';
 import { YoungChildDiagnosisCriteria } from '../../types';
 import TestHistory from '../common/TestHistory';
+import { youngChildRiskFactorsList } from '../../constants/riskFactorData';
 
 const ReportSection: React.FC<{ title: string; icon: React.ReactElement; children: React.ReactNode; }> = ({ title, icon, children }) => (
     <div className="py-4 border-b border-slate-200 last:border-b-0">
@@ -62,7 +64,8 @@ const YoungChildReport: React.FC = () => {
         youngChild_currentGinaStep,
         youngChild_currentTreatmentStrategy,
         youngChild_reviewReminderDate,
-        cactHistory 
+        cactHistory,
+        youngChild_riskFactors
     } = patientData;
 
     const symptomPatternText = youngChild_symptomPattern === 'infrequentViralWheeze' 
@@ -82,6 +85,10 @@ const YoungChildReport: React.FC = () => {
     if (youngChild_currentTreatmentStrategy !== 'preferred' && treatmentStepDetails?.alternatives) {
         activeTreatment = treatmentStepDetails.alternatives.find(alt => alt.id === youngChild_currentTreatmentStrategy) || activeTreatment;
     }
+
+    const riskFactorsText = youngChild_riskFactors
+        .map(id => youngChildRiskFactorsList.find(f => f.id === id)?.label)
+        .filter(Boolean);
 
     return (
         <div id="print-area">
@@ -124,6 +131,14 @@ const YoungChildReport: React.FC = () => {
                              {activeTreatment.reliever && <p className="text-xs mt-1"><strong>Secours :</strong> {activeTreatment.reliever}</p>}
                         </div>
                      )}
+                </ReportSection>
+
+                <ReportSection title="Facteurs de Risque" icon={<AlertTriangle />}>
+                    {riskFactorsText.length > 0 ? (
+                        <ul className="list-disc list-inside text-xs">
+                            {riskFactorsText.map(text => <li key={text}>{text}</li>)}
+                        </ul>
+                    ) : <p className="text-slate-500 italic text-xs">Aucun facteur de risque majeur identifié.</p>}
                 </ReportSection>
 
                 <ReportSection title="Historique des Tests" icon={<Zap />}>

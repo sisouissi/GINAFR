@@ -10,7 +10,7 @@ const ChildInitialAssessmentStep: React.FC = () => {
   const { navigateTo } = useNavigation();
 
   const handleSelection = (initialGinaStep: ChildGINASteps) => {
-    navigateTo('CHILD_RISK_ASSESSMENT_STEP', {
+    navigateTo('CHILD_PATHWAY_SELECTION_STEP', {
       child_currentGinaStep: initialGinaStep,
     });
   };
@@ -129,7 +129,7 @@ const ChildInitialAssessmentStep: React.FC = () => {
         <div className="flex items-start">
           <HelpCircle size={18} className="mr-2 mt-0.5 text-slate-500 flex-shrink-0" />
           <p className="text-slate-600">
-            Cet organigramme guide le choix du palier de traitement GINA initial. L'écran suivant évaluera les facteurs de risque spécifiques.
+            Cet organigramme guide le choix du palier de traitement GINA initial. L'étape suivante sera la sélection de la voie thérapeutique.
           </p>
         </div>
       </div>
